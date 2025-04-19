@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS' // Ensure this name matches the one configured in Jenkins global tools
+        nodejs 'NodeJS' 
     }
 
     environment {
@@ -112,7 +112,7 @@ pipeline {
                     }
                     sh "docker system prune -f || true"
                 } catch (Exception e) {
-                    echo "⚠️ Docker cleanup failed: ${e.message}"
+                    echo "Docker cleanup failed: ${e.message}"
                 }
             }
         }
