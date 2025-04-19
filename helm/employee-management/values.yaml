@@ -1,0 +1,25 @@
+replicaCount: 1
+
+image:
+  repository: hemanthgangula/employee-management
+  tag: latest
+  pullPolicy: Always
+  
+
+service:
+  name: employee-management
+  type: NodePort  
+  port: 3000
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: employee-management.local
+      paths: ["/"]
+
+resources: {}
+
+serviceAccount:
+  create: true  
+  name: ""      #

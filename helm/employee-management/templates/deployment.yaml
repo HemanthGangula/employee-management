@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-employee-management
+  labels:
+    app: {{ .Release.Name }}-employee-management
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-employee-management
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-employee-management
+    spec:
+      containers:
+        - name: employee-management
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
